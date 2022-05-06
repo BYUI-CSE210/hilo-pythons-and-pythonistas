@@ -18,3 +18,68 @@ If a player decides not to play again the game is over.
 
 # Team Members Names
 Gloria Estrella Navarrete
+
+Team Assignments:
+
+Alvaro: Player class
+
+Gloria: Game class
+
+Camden: Main (Pt. 1)
+	-display prev. card
+	-display the guess
+	-dispaly next/current cards
+	-compare guess to current and prev card
+
+Chris: Main (Pt.2)
+	-Determine score and display it/ provide it to player class
+	-Ask player if they want to play again. (Y/N)
+	-Display win/lose message.
+
+
+Game Design:
+
+	player (Class) 
+Responsibility: 
+	- Keep track of points.
+
+Behaviors:
+	- show points 
+	- keep track of guess
+	- add points
+	- remove points 
+
+State:
+	- points
+	- guess
+
+
+
+	Game (class)
+Responsibility:
+	- Keep track of cards and guess. 
+
+Behaviors:
+	- display states (The card is: ? AND Next card was: ?)
+	- generate random card
+	- update current card state
+	- update prev. card state
+
+State: 
+	- Prev. card
+	- Current card
+
+	
+
+	Main (function)
+
+Responsibility:
+
+Behaviors:
+	-display prev. card
+	-display the guess
+	-dispaly next/current cards
+	-compare guess to current and prev card
+	-Determine score and display it/ provide it to player class
+	-Ask player if they want to play again. (Y/N)
+	-Display win/lose message. 
