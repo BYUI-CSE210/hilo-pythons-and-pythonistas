@@ -24,6 +24,5 @@ class Player:
     def addPoints(self):
         self.score += 100
 
-
     def removePoints(self):
         self.score -= 75

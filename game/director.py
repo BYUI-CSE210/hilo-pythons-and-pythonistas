@@ -7,6 +7,9 @@
 
 
 class Director:
+    playerClass = Player()
+    gameClass = Game()
+    guess = ''
     """A person who directs the game. 
 
     The responsibility of a Director is to control the sequence of play.
@@ -40,6 +43,7 @@ class Director:
         Args:
             self (Director): An instance of Director.
         """
+        self.guess = input('Higher or lower? (h/l) ')
         pass
 
     def do_updates(self):
@@ -48,6 +52,21 @@ class Director:
         Args:
             self (Director): An instance of Director.
         """
+        if self.gameClass.newCard > self.gameClass.prevCard:
+            if self.guess == 'h':
+                self.playerClass.addPoints()
+            elif self.guess == 'l':
+                self.playerClass.removePoints()
+
+        if self.gameClass.newCard < self.gameClass.prevCard:
+            if self.guess == 'l':
+                self.playerClass.addPoints()
+            if self.guess == 'h':
+                 self.playerClass.removePoints() 
+
+        if self.playerClass.score <= 0:
+            self.is_playing = False          
+
         if not self.is_playing:
             return
 
@@ -57,5 +76,15 @@ class Director:
         Args:
             self (Director): An instance of Director.
         """
+        print(f'Your current score is: {self.playerClass.score}')
+        if self.is_playing == False:
+            print('You have lost. How unlucky.')
+        
+        if self.is_playing == True:
+            yesOrNo = input('Would you like to play again? (y/n) ')
+            if yesOrNo == 'n':
+                exit()
+    
+
         if not self.is_playing:
             return
