@@ -14,6 +14,7 @@ class Player:
     def showPoints(self):
         print(self.score)
 
+    #This class is called by the newGuess method to update the previous guess
     def updatePrevGuess(self):
         self.prevGuess = self.currentGuess
 
