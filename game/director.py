@@ -1,3 +1,5 @@
+from game.game import Game
+from game.player import Player
 
 """
     Update the code and the comments as you change the code for your game.  You will be graded on following the
@@ -25,6 +27,7 @@ class Director:
             self (Director): an instance of Director.
         """
         self.is_playing = True
+        self.gameClass.innitialize()
 
     def start_game(self):
         """Starts the game by running the main game loop.
@@ -34,8 +37,10 @@ class Director:
         """
         while self.is_playing:
             self.get_inputs()
+            self.gameClass.draw_card()
             self.do_updates()
             self.do_outputs()
+            self.gameClass.next_turn()
 
     def get_inputs(self):
         """Ask the user if they want to roll.
@@ -43,7 +48,8 @@ class Director:
         Args:
             self (Director): An instance of Director.
         """
-        self.guess = input('Higher or lower? (h/l) ')
+        print(f'The current card is {self.gameClass.current}.')
+        self.guess = input('Will the next card be higher or lower? (h/l) ')
         pass
 
     def do_updates(self):
@@ -52,17 +58,22 @@ class Director:
         Args:
             self (Director): An instance of Director.
         """
-        if self.gameClass.newCard > self.gameClass.prevCard:
+        print(f'The next card is {self.gameClass.next}.')
+        if self.gameClass.next > self.gameClass.current:
             if self.guess == 'h':
                 self.playerClass.addPoints()
+                print('You were right!')
             elif self.guess == 'l':
                 self.playerClass.removePoints()
+                print('Looks like you were wrong.')
 
-        if self.gameClass.newCard < self.gameClass.prevCard:
+        if self.gameClass.next < self.gameClass.current:
             if self.guess == 'l':
                 self.playerClass.addPoints()
+                print('You were right!')
             if self.guess == 'h':
-                 self.playerClass.removePoints() 
+                self.playerClass.removePoints()
+                print('Looks like you were wrong.') 
 
         if self.playerClass.score <= 0:
             self.is_playing = False          
